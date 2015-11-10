@@ -27,8 +27,7 @@ def main():
         pass
 
     plt.ylabel("Hata Payi")
-    plt.xlabel("n")  
-   
+    plt.xlabel("n")     
     plt.plot(nler, hatalar,linewidth=2)   
     plt.show()
     plt.axis([1,len(nler),0,2])

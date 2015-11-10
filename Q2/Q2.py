@@ -4,7 +4,7 @@ from math import *
 from matplotlib import pyplot as plt
 
 
-nler = range(1000,10000,85)
+nler = range(500000,1000000,1000)
 
 
 
@@ -19,13 +19,16 @@ def main():
         pass
 
     
-
-
+    #print f1.__doc__
+    lines=[]
     plt.ylabel("Zaman")
-    plt.xlabel("n")     
+    plt.xlabel("n")
+    plt.figure(figsize=(10,10))     
     for x in zamanlar:
-        plt.plot(nler,zamanlar[x])   
-        pass    
+        line= plt.plot(nler,zamanlar[x],label=globals()[x].__doc__)   
+        lines.append(line);
+        pass   
+    plt.legend(loc="upper right") 
     plt.show()
     plt.axis([1,len(nler),0,2])
 
@@ -37,6 +40,7 @@ def main():
 
 #n^5*lnn
 def f1(degerler):
+    """ n^5*lnn """
     z = []
     for x in degerler:
         t = timeit.default_timer()
@@ -50,6 +54,7 @@ def f1(degerler):
 
 #n^0.5
 def f2(degerler):
+    """ n^0.5 """
     z = []
     for x in degerler:
         t = timeit.default_timer()
@@ -63,6 +68,7 @@ def f2(degerler):
 
 #n*log10(n)
 def f3(degerler):
+    """ n*log10(n) """
     z = []
     for x in degerler:
         t = timeit.default_timer()
@@ -76,6 +82,7 @@ def f3(degerler):
 
 #n*ln(n^5)
 def f4(degerler):
+    """ n*ln(n^5) """
     z = []
     for x in degerler:
         t = timeit.default_timer()
@@ -89,6 +96,7 @@ def f4(degerler):
 
 #n
 def f5(degerler):
+    """ n """
     z = []
     for x in degerler:
         t = timeit.default_timer()
@@ -103,6 +111,7 @@ def f5(degerler):
 
 #n^(ln4)
 def f6(degerler):
+    """ n^(ln4) """
     z = []
     for x in degerler:
         t = timeit.default_timer()
@@ -115,6 +124,7 @@ def f6(degerler):
 
 #1
 def f7(degerler):
+    """ 1 """
     z = []
     for x in degerler:
         t = timeit.default_timer()
@@ -123,8 +133,11 @@ def f7(degerler):
         pass
     return z
     pass
+
+
 #n*ln(n)
 def f8(degerler):
+    """ n*ln(n) """
     z = []
     for x in degerler:
         t = timeit.default_timer()
@@ -136,6 +149,7 @@ def f8(degerler):
 
 #n^2*(ln(n))
 def f9(degerler):
+    """ n^2*(ln(n)) """
     z = []
     for x in degerler:
         t = timeit.default_timer()
@@ -145,9 +159,9 @@ def f9(degerler):
     return z
     pass
 
-
 #n^3
 def f10(degerler):
+    """ n^3 """
     z = []
     for x in degerler:
         t = timeit.default_timer()
@@ -160,6 +174,7 @@ def f10(degerler):
 
 #n^2
 def f11(degerler):
+    """ n^2 """
     z = []
     for x in degerler:
         t = timeit.default_timer()
@@ -171,6 +186,7 @@ def f11(degerler):
 
 #n^(log2(4))
 def f12(degerler):
+    """ n^(log2(4)) """
     z = []
     for x in degerler:
         t = timeit.default_timer()

@@ -1,0 +1,12 @@
+D:\Akademik\Yüksek Lisans\AlgortimaAnalizi-I(Hasan Hoca)\AlgoritmaAnaliziI\Job\bin\Debug\Job.exe.config
+D:\Akademik\Yüksek Lisans\AlgortimaAnalizi-I(Hasan Hoca)\AlgoritmaAnaliziI\Job\bin\Debug\Job.exe
+D:\Akademik\Yüksek Lisans\AlgortimaAnalizi-I(Hasan Hoca)\AlgoritmaAnaliziI\Job\bin\Debug\Job.pdb
+D:\Akademik\Yüksek Lisans\AlgortimaAnalizi-I(Hasan Hoca)\AlgoritmaAnaliziI\Job\obj\Debug\Job.csprojResolveAssemblyReference.cache
+D:\Akademik\Yüksek Lisans\AlgortimaAnalizi-I(Hasan Hoca)\AlgoritmaAnaliziI\Job\obj\Debug\Job.exe
+D:\Akademik\Yüksek Lisans\AlgortimaAnalizi-I(Hasan Hoca)\AlgoritmaAnaliziI\Job\obj\Debug\Job.pdb
+D:\Akademik\Yüksek Lisans\AlgortimaAnalizi-I(Hasan Hoca)\AlgorithmAnalysis\Job\bin\Debug\Job.exe.config
+D:\Akademik\Yüksek Lisans\AlgortimaAnalizi-I(Hasan Hoca)\AlgorithmAnalysis\Job\bin\Debug\Job.exe
+D:\Akademik\Yüksek Lisans\AlgortimaAnalizi-I(Hasan Hoca)\AlgorithmAnalysis\Job\bin\Debug\Job.pdb
+D:\Akademik\Yüksek Lisans\AlgortimaAnalizi-I(Hasan Hoca)\AlgorithmAnalysis\Job\obj\Debug\Job.csprojResolveAssemblyReference.cache
+D:\Akademik\Yüksek Lisans\AlgortimaAnalizi-I(Hasan Hoca)\AlgorithmAnalysis\Job\obj\Debug\Job.exe
+D:\Akademik\Yüksek Lisans\AlgortimaAnalizi-I(Hasan Hoca)\AlgorithmAnalysis\Job\obj\Debug\Job.pdb
