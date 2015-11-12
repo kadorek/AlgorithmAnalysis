@@ -7,17 +7,7 @@ import random
 
 def main():
 
-    nodes = []
-    node_ids = []
-
-    n = randint(2,1000)
-
-
-    for x in range(1,n):
-        nodes.append(x)
-        pass
-
-
+   
 
 
     pass
@@ -55,5 +45,11 @@ class Question:
         while(node != node_ids[node]):
             node = node_ids[node]
         return node
+
+    def HizliBirlesim_Birlestir(self,node1,node2):
+        node1_kok = HizliBirlesim_KokBul(node1)
+        node2_kok = HizliBirlesim_KokBul(node2)
+        node_ids[node2_kok] = node1_kok
     
+
 
