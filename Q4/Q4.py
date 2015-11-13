@@ -1,4 +1,4 @@
-import sys
+﻿import sys
 import math
 import timeit
 import random
@@ -50,6 +50,36 @@ class Question:
         node1_kok = HizliBirlesim_KokBul(node1)
         node2_kok = HizliBirlesim_KokBul(node2)
         node_ids[node2_kok] = node1_kok
+
+    def AgirlikliHizliBirlesim_KokBul(self,node):
+        while(node != node_ids[node]):
+            node = node_ids[node]
+        return node    
+
+    def AgirlikliHizliBirlesim_Derinlik(self,node):
+        sayac = 0
+        while(node != node_ids[node]):
+            sayac+=1
+            node = node_ids[node]
+        return sayac
+
+
+    def AgirlikliHizliBirlesim_Bul(self, node1,node2):
+        return AgirlikliHizliBirlesim_KokBul(node1) == AgirlikliHizliBirlesim_KokBul(node2)
+        
+
+    def AgirlikHizliBirlesim_Birlestir(self,node1,node2):
+        node1_kok = node_ids[node1]
+        node2_kok = node_ids[node2]
+        d1 = AgirlikliHizliBirlesim_Derinlik(node1)
+        d2 = AgirlikliHizliBirlesim_Derinlik(node2)
+        if d1 > d2:
+            node_ids[node2] = node1_kok
+        else:
+            node_ids[node1] = node2_kok
+
+      
+
     
 
 
