@@ -5,22 +5,32 @@ import random
 
 
 def main():
-    q = Question()
-    m = randint(10,q.n - 1)
+    n = random.randint(1000,2000)
+    m = random.randint(n / 2,n - 1)
+    qHizliBul = Question(n,m)
+    qHizliBirlesim = Question(n,m)
+    qAgirlikli = Question(n,m)
+    qPatika = Question(n,m)
     hizliBul_zamanlar = []
     hizliBirlesim_zamanlar = []
     hizliBirlesimAgirlikli_zamanlar = []
     patikaSikistirma_zamanlar = []
 
-    for x in range(1,m):
+    for x in range(1,qHizliBul.m):
 
-
-
-
+        n1 = qHizliBul.nodes[random.randint(0,n - 1)]
+        n2 = qHizliBul.nodes[random.randint(0,n - 1)]
+        while(n1 == n2 or qHizliBul.node_ids[n1] == qHizliBul.node_ids[n2]):
+            n1 = qHizliBul.nodes[random.randint(0,n - 1)]
+            n2 = qHizliBul.nodes[random.randint(0,n - 1)]
+        s = timeit.default_timer()
+        qHizliBul.HizliBul_Birlestir(n1,n2)
+        hizliBul_zamanlar.append(timeit.default_timer() - s)
         pass
 
-
-    pass
+    #for x in range(1,qHizliBirlesim):
+        
+    #    pass
 
 
 
@@ -30,13 +40,14 @@ if __name__ == "__main__":
 
 class Question:
 
-    def __init__(self):
-        self.n = random.randint(20,1000)
-        self.m = random.randint(10,n / 2)
+    def __init__(self,nx,mx):
+        self.n = nx
+        self.m = mx
         self.nodes = [].extend(range(1,self.n))
         self.node_ids = []
 
    
+
     def HizliBul_Bul(self,node1, node2):
         return node_ids[node1] == node_ids[node2]
 
@@ -88,18 +99,37 @@ class Question:
         else:
             node_ids[node1] = node2_kok
 
-   def PatikaSikistirma_Kokbul(self,node):
-       toTheTop=[]
-       
+    def PatikaSikistirma_Kokbul(self,node):
+        toTheTop = []       
         while(node != node_ids[node]):
+            toTheTop.append(node)
+            node = node_ids[node]        
+        for x in toTheTop:
+            self.node_ids[x] = node
+
+
+
+
+    def PatikaSikistirma_Bul(self,node1,node2):
+       return PatikaSikistirma_Kokbul(node1) == PatikaSikistirma_Kokbul(node2)
+
+
+    def PatikaSikistirma_Birlestir(self,node1,node2):
+        node1_kok = node_ids[node1]
+        node2_kok = node_ids[node2]
+        d1 = PatikaSikistirma_Derinlik(node1)
+        d2 = PatikaSikistirma_Derinlik(node2)
+        if d1 > d2:
+            node_ids[node2] = node1_kok
+        else:
+            node_ids[node1] = node2_kok
+
+    def PatikaSikistirma_Derinlik(self,node):
+        sayac = 0
+        while(node != node_ids[node]):
+            sayac+=1
             node = node_ids[node]
-        pass
-
-
-
-   def PatikaSikistirma_Bul(self,node1,node2):
-       return False
-
+        return sayac
     
 
 
