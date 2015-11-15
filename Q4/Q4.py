@@ -4,10 +4,20 @@ import timeit
 import random
 
 
-
 def main():
+    q = Question()
+    m = randint(10,q.n - 1)
+    hizliBul_zamanlar = []
+    hizliBirlesim_zamanlar = []
+    hizliBirlesimAgirlikli_zamanlar = []
+    patikaSikistirma_zamanlar = []
 
-   
+    for x in range(1,m):
+
+
+
+
+        pass
 
 
     pass
@@ -39,7 +49,7 @@ class Question:
 
     def HizliBirlesim_Bul(self,node1,node2):
         return HizliBirlesim_KokBul(node1) == HizliBirlesim_KokBul(node2)
-        pass
+        
     
     def HizliBirlesim_KokBul(self,node):
         while(node != node_ids[node]):
@@ -78,7 +88,17 @@ class Question:
         else:
             node_ids[node1] = node2_kok
 
-      
+   def PatikaSikistirma_Kokbul(self,node):
+       toTheTop=[]
+       
+        while(node != node_ids[node]):
+            node = node_ids[node]
+        pass
+
+
+
+   def PatikaSikistirma_Bul(self,node1,node2):
+       return False
 
     
 
