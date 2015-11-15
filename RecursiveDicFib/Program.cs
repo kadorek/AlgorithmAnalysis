@@ -31,7 +31,7 @@ namespace RecursiveDicFib
             }
             else
             {
-                d.Add(n)
+            //    d.Add(n);
             }
 
             if (d.Keys.Contains(n - 1))

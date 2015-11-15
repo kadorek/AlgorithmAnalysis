@@ -1,4 +1,4 @@
-import sys
+﻿import sys
 import timeit
 from math import *
 from matplotlib import pyplot as plt
@@ -13,13 +13,10 @@ def main():
 
     zamanlar = {}
    
-    for x in range(1,12):
-        
-        zamanlar["f"+str(x)] = globals()["f"+str(x)](nler) #  getattr(self,"f4")(nler)
+    for x in range(1,12):        
+        zamanlar["f"+str(x)] = globals()["f"+str(x)](nler) #  getattr(self,"f4")(nler)        
         pass
 
-    
-    #print f1.__doc__
     lines=[]
     plt.ylabel("Zaman")
     plt.xlabel("n")
