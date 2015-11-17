@@ -42,6 +42,7 @@ class QuickFind(UF):
     def __init__(self,nx,mx):
         self.name = u"Hizli Bul"
         self.type = 1
+        self.indicator='r--'
         return super(QuickFind, self).__init__(self.type,nx,mx)
 
 
@@ -62,6 +63,7 @@ class QuickUnion(UF):
     def __init__(self,  nx, mx):
         self.name = u"Hızlı Birleştir"
         self.type = 2
+        self.indicator='bo'
         return super(QuickUnion, self).__init__(self.type, nx, mx)
 
     def find(self,node1,node2):
@@ -80,6 +82,7 @@ class WeightedQuickUnion(UF):
     def __init__(self,  nx, mx):
         self.name = u"Ağırlıklı Hızlı Birleştir"
         self.type = 3
+        self.indicator='g^'
         return super(WeightedQuickUnion, self).__init__(self.type, nx, mx)
 
     def find(self,node1,node2):
@@ -100,7 +103,8 @@ class WeightedQuickUnion(UF):
 class PathCompression(UF):
     def __init__(self,  nx, mx):
         self.name = u"Patika Sıkıştırma"
-        self.type = 2
+        self.type = 4
+        self.indicator='os'
         return super(PathCompression, self).__init__(self.type, nx, mx)
 
     def kokbul(self, node):
@@ -139,13 +143,11 @@ def main():
     hizliBirlesim_zamanlar = []
     hizliBirlesimAgirlikli_zamanlar = []
     patikaSikistirma_zamanlar = []
-
-    alar = [QuickFind(1,1),QuickUnion(1,1),WeightedQuickUnion(1,1),PathCompression(1,1)]
+    #,PathCompression(1,1)
+    alar = [QuickFind(1,1),QuickUnion(1,1),WeightedQuickUnion(1,1)]
     nler = [1000,3000, 5000]
-    mler = [10,70,150,300,500,750]
+    mler = [10,70,150,300,500]
 
-    plt.ylabel("Zaman")
-    plt.xlabel("m")
     plt.figure(figsize=(10,10))
     lines = []
     for k in alar:
@@ -163,12 +165,14 @@ def main():
                     k.union(n1,n2)            
                 zamanlar.append(timeit.default_timer() - start)
             nstr=str(a)        
-            line = plt.plot(mler,zamanlar,label= k.name + " - " + nstr)
+            line = plt.plot(mler,zamanlar,label= k.name + " - n=" + nstr,lw=2)
             lines.append(line)
-    plt.legend(loc="upper right") 
-    plt.figtext(.02, .02,k.name)
+    plt.legend(loc="upper left") 
+    plt.figtext(.02, .02,u"Birleştir ve Bul algoritmaları karşılaştırılması")  
+    plt.ylabel("Zaman")
+    plt.xlabel("m")
     plt.show()
-    plt.axis([1,750,0,5])
+    plt.axis([1,750,0,5])  
 
 
 
