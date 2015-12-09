@@ -32,7 +32,7 @@ xMax=200;
 yMax=200;
 xMin=0;
 yMin=0;
-n=3;
+n=25;
 segments=[]
 
 def CCW(p1, p2, p3):
