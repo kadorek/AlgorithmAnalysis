@@ -44,6 +44,7 @@ def IsIntersect(s1,s2):
     return ccw1<0 and ccw2<0
 
 def main():
+    kesisesnOlduMu=False
     for x in range(n):
         pA =Point(randint(xMin,xMax),randint(yMin,yMax))
         pB=Point(randint(xMin,xMax),randint(yMin,yMax))
@@ -68,7 +69,8 @@ def main():
             pass
         pass
 
-
+    if kesisesnOlduMu==False:
+        print "Kesiþen olmadý."
     input()
 
 
