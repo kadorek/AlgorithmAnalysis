@@ -1,3 +1,5 @@
+ï»¿
+
 import sys
 from random import randint
 from PIL import Image,ImageDraw,ImageFont
@@ -30,14 +32,11 @@ xMax=200;
 yMax=200;
 xMin=0;
 yMin=0;
-n=50;
+n=3;
 segments=[]
-#segments.append(Segment(Point(1,1),Point(3,3)))
-#segments.append(Segment(Point(1,3),Point(3,1)))
 
 def CCW(p1, p2, p3):
     return (p2.X - p1.X)*(p3.Y - p1.Y) - (p2.Y - p1.Y)*(p3.X - p1.X)
-
 
 def IsIntersect(s1,s2):
     ccw1=CCW(s1.P1,s1.P2,s2.P1)*CCW(s1.P1,s1.P2,s2.P2)
@@ -60,7 +59,6 @@ def main():
         segments.append(s)
         draw.line((s.P1.X,s.P1.Y,s.P2.X,s.P2.Y),fill=0);
         draw.text((s.P1.X+5,s.P1.Y+5),s.Yazdir(),fill=128, font=font)
-        pass
 
     im.show()
 
@@ -76,11 +74,9 @@ def main():
                 print "----------------------------------"
                 kesisenOlduMu=True               
                 break
-            pass
-        pass
 
     if kesisenOlduMu==False:
-        print "Kesiþen olmadý."
+        print u"KesiÅŸen olmadÄ±."
     input()
 
 if __name__ == "__main__":
