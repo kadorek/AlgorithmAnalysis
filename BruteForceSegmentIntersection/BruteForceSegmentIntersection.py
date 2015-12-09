@@ -30,7 +30,7 @@ xMax=200;
 yMax=200;
 xMin=0;
 yMin=0;
-n=10;
+n=50;
 segments=[]
 #segments.append(Segment(Point(1,1),Point(3,3)))
 #segments.append(Segment(Point(1,3),Point(3,1)))
@@ -46,14 +46,9 @@ def IsIntersect(s1,s2):
 
 def main():
 
-    im = Image.new('RGBA', (400, 400), (0, 255, 0, 0)) 
+    im = Image.new('RGBA', (400, 400), (255, 255, 255, 0)) 
     draw = ImageDraw.Draw(im) 
     font = ImageFont.truetype("arial.ttf", 7)
-    draw.line((100,200, 150,300), fill=128)
-
-
-
-
     kesisenOlduMu=False
     for x in range(n):
         pA =Point(randint(xMin,xMax),randint(yMin,yMax))
@@ -63,8 +58,8 @@ def main():
             pB=Point(randint(xMin,xMax),randint(yMin,yMax))
         s=Segment(pA,pB)
         segments.append(s)
-        draw.line((s.P1.X,s.P1.Y,s.P2.X,s.P2.Y),fill=200);
-        draw.text((s.P1.X,s.P1.Y),s.Yazdir(),fill=128, font=font)
+        draw.line((s.P1.X,s.P1.Y,s.P2.X,s.P2.Y),fill=0);
+        draw.text((s.P1.X+5,s.P1.Y+5),s.Yazdir(),fill=128, font=font)
         pass
 
     im.show()
@@ -88,7 +83,9 @@ def main():
         print "Kesiþen olmadý."
     input()
 
-
-
 if __name__ == "__main__":
     sys.exit(int(main() or 0))
+
+
+
+
