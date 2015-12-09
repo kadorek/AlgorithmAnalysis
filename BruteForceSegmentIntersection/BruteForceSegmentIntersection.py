@@ -5,6 +5,13 @@ from random import randint
 from PIL import Image,ImageDraw,ImageFont
 
 
+#############
+
+# Eğer doğruların çizdirildiği resim gözükmez ise resmin gözükmesi için programı tekrar çalıştırmak gereklidir.
+
+##############
+
+#Noktları tanımlamak üzere kullanılan sınıf yapısı
 class Point(object):
     
     def __init__(self, x,y):
@@ -17,6 +24,7 @@ class Point(object):
     def Yazdir(self):
         return "P(%s,%s)"%(self.X,self.Y)
 
+#Doğru parçalarını tanımlamak için kullanılan sınıf yapısı
 class Segment(object):
     def __init__(self, p1,p2):
         self.P1=p1;
@@ -27,17 +35,20 @@ class Segment(object):
         return "S[{0},{1}]".format(self.P1.Yazdir(),self.P2.Yazdir())
 
 
-
+##Kullanılabilecek nokta uzayını belitmek için sınırlamalar.
 xMax=200;
 yMax=200;
 xMin=0;
 yMin=0;
+############
+#Doğru parçası adedi
 n=25;
+#Doğru parçaları listesi
 segments=[]
-
+# 3 noktanın CCW değerinin hesaplanması
 def CCW(p1, p2, p3):
     return (p2.X - p1.X)*(p3.Y - p1.Y) - (p2.Y - p1.Y)*(p3.X - p1.X)
-
+# 2 doğru parçasının kesişiminin kontrolü
 def IsIntersect(s1,s2):
     ccw1=CCW(s1.P1,s1.P2,s2.P1)*CCW(s1.P1,s1.P2,s2.P2)
     ccw2=CCW(s2.P1,s2.P2,s1.P1)*CCW(s2.P1,s2.P2,s1.P2)
@@ -45,23 +56,27 @@ def IsIntersect(s1,s2):
 
 def main():
 
+    #doğru parçalarının görsel olarak gösterimi için alt yapı
     im = Image.new('RGBA', (400, 400), (255, 255, 255, 0)) 
     draw = ImageDraw.Draw(im) 
     font = ImageFont.truetype("arial.ttf", 7)
     kesisenOlduMu=False
+    #n adet doğru parçasının oluşturulması
     for x in range(n):
         pA =Point(randint(xMin,xMax),randint(yMin,yMax))
         pB=Point(randint(xMin,xMax),randint(yMin,yMax))
+        # Bir doğru parçasında aynı noktalar kullanılmasın
         while(pA.IsTheSame(pB)):
             pA =Point(randint(xMin,xMax),randint(yMin,yMax))
             pB=Point(randint(xMin,xMax),randint(yMin,yMax))
         s=Segment(pA,pB)
         segments.append(s)
+        #her doğru parçasının resim üzerine çizilmesi ve kordinatlarının yazılması
         draw.line((s.P1.X,s.P1.Y,s.P2.X,s.P2.Y),fill=0);
         draw.text((s.P1.X+5,s.P1.Y+5),s.Yazdir(),fill=128, font=font)
-
+    #oluşturulan doğru parçalarının bulunduğu resmin gösterimi
     im.show()
-
+    #brute force algoritması ile her doğru parçasının kesiştiği en çok bir doğru parçasının bulunması
     for x in range(len(segments)):
         s1=segments[x]
         for k in range(len(segments)):
@@ -69,12 +84,13 @@ def main():
             if s1.IsTheSame(s2):
                 continue
             if IsIntersect(s1,s2):
+                #kesişen doğru parçaları ikilileri yazdırılır.
                 print s1.Yazdir()
                 print s2.Yazdir()
                 print "----------------------------------"
                 kesisenOlduMu=True               
                 break
-
+    # hiç bir kesişme olmadı ise ekrana uyarı verilmesi
     if kesisenOlduMu==False:
         print u"Kesişen olmadı."
     input()
