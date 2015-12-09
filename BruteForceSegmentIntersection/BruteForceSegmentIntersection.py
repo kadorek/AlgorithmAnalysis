@@ -1,6 +1,6 @@
 import sys
 from random import randint
-
+from PIL import Image,ImageDraw,ImageFont
 
 
 class Point(object):
@@ -26,13 +26,14 @@ class Segment(object):
 
 
 
-xMax=100;
-yMax=100;
+xMax=200;
+yMax=200;
 xMin=0;
 yMin=0;
-n=100;
+n=10;
 segments=[]
-
+#segments.append(Segment(Point(1,1),Point(3,3)))
+#segments.append(Segment(Point(1,3),Point(3,1)))
 
 def CCW(p1, p2, p3):
     return (p2.X - p1.X)*(p3.Y - p1.Y) - (p2.Y - p1.Y)*(p3.X - p1.X)
@@ -40,20 +41,33 @@ def CCW(p1, p2, p3):
 
 def IsIntersect(s1,s2):
     ccw1=CCW(s1.P1,s1.P2,s2.P1)*CCW(s1.P1,s1.P2,s2.P2)
-    ccw2=CCW(s2.P1,s2.P2,s1.P1)*CCW(s2.P1,s2.P2,s2.P2)
+    ccw2=CCW(s2.P1,s2.P2,s1.P1)*CCW(s2.P1,s2.P2,s1.P2)
     return ccw1<0 and ccw2<0
 
 def main():
-    kesisesnOlduMu=False
+
+    im = Image.new('RGBA', (400, 400), (0, 255, 0, 0)) 
+    draw = ImageDraw.Draw(im) 
+    font = ImageFont.truetype("arial.ttf", 7)
+    draw.line((100,200, 150,300), fill=128)
+
+
+
+
+    kesisenOlduMu=False
     for x in range(n):
         pA =Point(randint(xMin,xMax),randint(yMin,yMax))
         pB=Point(randint(xMin,xMax),randint(yMin,yMax))
         while(pA.IsTheSame(pB)):
             pA =Point(randint(xMin,xMax),randint(yMin,yMax))
             pB=Point(randint(xMin,xMax),randint(yMin,yMax))
-        segments.append(Segment(pA,pB))
+        s=Segment(pA,pB)
+        segments.append(s)
+        draw.line((s.P1.X,s.P1.Y,s.P2.X,s.P2.Y),fill=200);
+        draw.text((s.P1.X,s.P1.Y),s.Yazdir(),fill=128, font=font)
         pass
 
+    im.show()
 
     for x in range(len(segments)):
         s1=segments[x]
@@ -64,12 +78,13 @@ def main():
             if IsIntersect(s1,s2):
                 print s1.Yazdir()
                 print s2.Yazdir()
-               
+                print "----------------------------------"
+                kesisenOlduMu=True               
                 break
             pass
         pass
 
-    if kesisesnOlduMu==False:
+    if kesisenOlduMu==False:
         print "Kesiþen olmadý."
     input()
 
