@@ -7,6 +7,7 @@ from PIL import Image,ImageDraw,ImageFont
 
 #############
 
+# Doğruların çizilmesi ve kayıt edilmesi için çalıştırılan bilgisayar sisteminde PIL modülünün olması gereklidir.
 # Eğer doğruların çizdirildiği resim gözükmez ise resmin gözükmesi için programı tekrar çalıştırmak gereklidir.
 
 ##############
@@ -36,13 +37,13 @@ class Segment(object):
 
 
 ##Kullanılabilecek nokta uzayını belitmek için sınırlamalar.
-xMax=200;
-yMax=200;
+xMax=400;
+yMax=400;
 xMin=0;
 yMin=0;
 ############
 #Doğru parçası adedi
-n=25;
+n=15;
 #Doğru parçaları listesi
 segments=[]
 # 3 noktanın CCW değerinin hesaplanması
@@ -75,6 +76,7 @@ def main():
         draw.line((s.P1.X,s.P1.Y,s.P2.X,s.P2.Y),fill=0);
         draw.text((s.P1.X+5,s.P1.Y+5),s.Yazdir(),fill=128, font=font)
     #oluşturulan doğru parçalarının bulunduğu resmin gösterimi
+    im.save("deneme.bmp")
     im.show()
     #brute force algoritması ile her doğru parçasının kesiştiği en çok bir doğru parçasının bulunması
     for x in range(len(segments)):
