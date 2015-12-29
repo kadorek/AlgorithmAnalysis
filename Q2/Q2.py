@@ -2,32 +2,37 @@
 import timeit
 from math import *
 from matplotlib import pyplot as plt
+import operator
 
 
-nler = range(500000,1000000,1000)
 
+nler = [100000,1000000,10000000,100000000,10000000000]
 
 
 def main():
+    indicators=["r.","g,","b<","c>","mv","y^","k1","r2","r3","g4","b8","yo"]
+    zamanlar = {}   
+    for t in nler:
+        for x in range(1,13):        
+            zamanlar["f"+str(x)] = globals()["f"+str(x)]([t]) 
+        sorted_zamanlar= sorted(zamanlar.items(),key=operator.itemgetter(1))
+        print " n : %d" %(t)
+        for x in sorted_zamanlar:
+            print( " %(doc)s  : %(zaman).30f " %{'doc':globals()[x[0]].__doc__,'zaman':x[1]})
+        lines=[]
+        indicatorIndex=0
+        plt.figure(figsize=(10,10))     
+        for x in zamanlar:
+            line= plt.plot([t],zamanlar[x],indicators[indicatorIndex],label=globals()[x].__doc__)   
+            indicatorIndex+=1
+            lines.append(line);
+            pass   
+        plt.legend(loc="upper right") 
+        plt.ylabel("Zaman(~ms)")
+        plt.xlabel("n=%d"%(t))
 
-
-    zamanlar = {}
-   
-    for x in range(1,12):        
-        zamanlar["f"+str(x)] = globals()["f"+str(x)](nler) #  getattr(self,"f4")(nler)        
-        pass
-
-    lines=[]
-    plt.ylabel("Zaman")
-    plt.xlabel("n")
-    plt.figure(figsize=(10,10))     
-    for x in zamanlar:
-        line= plt.plot(nler,zamanlar[x],label=globals()[x].__doc__)   
-        lines.append(line);
-        pass   
-    plt.legend(loc="upper right") 
     plt.show()
-    plt.axis([1,len(nler),0,2])
+    plt.axis([1,100000,0,10])
 
     input()
     pass
@@ -42,7 +47,7 @@ def f1(degerler):
     for x in degerler:
         t = timeit.default_timer()
         v = pow(x,5) * log(x,e)
-        z.append(timeit.default_timer() - t)
+        z=timeit.default_timer() - t
         pass
 
     return z
@@ -56,7 +61,7 @@ def f2(degerler):
     for x in degerler:
         t = timeit.default_timer()
         v = pow(x,0.5) 
-        z.append(timeit.default_timer() - t)
+        z=timeit.default_timer() - t
         pass
 
     return z
@@ -70,7 +75,7 @@ def f3(degerler):
     for x in degerler:
         t = timeit.default_timer()
         v = x * log(x,10)
-        z.append(timeit.default_timer() - t)
+        z=timeit.default_timer() - t
         pass
 
     return z
@@ -84,7 +89,8 @@ def f4(degerler):
     for x in degerler:
         t = timeit.default_timer()
         v = x * log(pow(x,5),e)
-        z.append(timeit.default_timer() - t)
+        z=timeit.default_timer() - t
+        #z.append(timeit.default_timer() - t)
         pass
 
     return z
@@ -98,7 +104,8 @@ def f5(degerler):
     for x in degerler:
         t = timeit.default_timer()
         v = x
-        z.append(timeit.default_timer() - t)
+        z=timeit.default_timer() - t
+        #z.append(timeit.default_timer() - t)
         pass
 
     return z
@@ -113,7 +120,8 @@ def f6(degerler):
     for x in degerler:
         t = timeit.default_timer()
         v = pow(x,log(4,e))
-        z.append(timeit.default_timer() - t)
+        z=timeit.default_timer() - t
+        #        z.append(timeit.default_timer() - t)
         pass
     return z
     pass
@@ -126,7 +134,8 @@ def f7(degerler):
     for x in degerler:
         t = timeit.default_timer()
         v = 1
-        z.append(timeit.default_timer() - t)
+        z=timeit.default_timer() - t
+        #        z.append(timeit.default_timer() - t)
         pass
     return z
     pass
@@ -139,7 +148,8 @@ def f8(degerler):
     for x in degerler:
         t = timeit.default_timer()
         v = x * log(x,e)
-        z.append(timeit.default_timer() - t)
+        z=timeit.default_timer() - t
+        #        z.append(timeit.default_timer() - t)
         pass
     return z
     pass
@@ -151,7 +161,8 @@ def f9(degerler):
     for x in degerler:
         t = timeit.default_timer()
         v = pow(x,2) * log(x,e)
-        z.append(timeit.default_timer() - t)
+        z=timeit.default_timer() - t
+        #        z.append(timeit.default_timer() - t)
         pass
     return z
     pass
@@ -163,7 +174,8 @@ def f10(degerler):
     for x in degerler:
         t = timeit.default_timer()
         v = pow(x,3)
-        z.append(timeit.default_timer() - t)
+        z=timeit.default_timer() - t
+        #        z.append(timeit.default_timer() - t)
         pass
     return z
     pass
@@ -176,7 +188,8 @@ def f11(degerler):
     for x in degerler:
         t = timeit.default_timer()
         v = pow(x,2)
-        z.append(timeit.default_timer() - t)
+        z=timeit.default_timer() - t
+        #        z.append(timeit.default_timer() - t)
         pass
     return z
     pass
@@ -188,7 +201,8 @@ def f12(degerler):
     for x in degerler:
         t = timeit.default_timer()
         v = pow(x,log(4,2))
-        z.append(timeit.default_timer() - t)
+        z=timeit.default_timer() - t
+        #        z.append(timeit.default_timer() - t)
         pass
     return z
     pass

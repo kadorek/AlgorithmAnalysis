@@ -114,7 +114,7 @@ class PathCompression(UF):
             node = self.nodes_ids[node]        
         for x in toTheTop:
             self.nodes_ids[x] = node
-        pass
+        return node
 
     def find(self,node1,node2):
         return self.kokbul(node1) == self.kokbul(node2)
@@ -122,12 +122,9 @@ class PathCompression(UF):
     def union(self ,node1,node2):
         kok1 = self.kokbul(node1)
         kok2 = self.kokbul(node2)
-        d1 = self.derinlik(node1)
-        d2 = self.derinlik(node2)
-        if d1 > d2:
-            self.nodes_ids[kok2] = kok1
-        else:
-            self.nodes_ids[kok1] = kok2
+        if kok1==kok2:
+            return
+        self.nodes_ids[kok1]=kok2
         pass
     pass
 
@@ -143,8 +140,8 @@ def main():
     hizliBirlesim_zamanlar = []
     hizliBirlesimAgirlikli_zamanlar = []
     patikaSikistirma_zamanlar = []
-    #,PathCompression(1,1)
-    alar = [QuickFind(1,1),QuickUnion(1,1),WeightedQuickUnion(1,1)]
+    #
+    alar = [QuickFind(1,1),QuickUnion(1,1),WeightedQuickUnion(1,1),PathCompression(1,1)]
     nler = [1000,3000, 5000]
     mler = [10,70,150,300,500]
 
@@ -167,82 +164,16 @@ def main():
             nstr=str(a)        
             line = plt.plot(mler,zamanlar,label= k.name + " - n=" + nstr,lw=2)
             lines.append(line)
+            print u"Tamamlanan grafik --> Algoritma : "+k.name+" n : "+nstr
     plt.legend(loc="upper left") 
     plt.figtext(.02, .02,u"Birleştir ve Bul algoritmaları karşılaştırılması")  
-    plt.ylabel("Zaman")
-    plt.xlabel("m")
+    plt.ylabel(u"Zaman(~ms)")
+    plt.xlabel(u"Birleştirme İşlem Adedi")
     plt.show()
     plt.axis([1,750,0,5])  
 
-
-
-
-
-    
-
-    #for x in range(1,qHizliBul.m):
-
-    #    n1 = qHizliBul.nodes[random.randint(0,n - 1)]
-    #    n2 = qHizliBul.nodes[random.randint(0,n - 1)]
-    #    while(n1 == n2 or qHizliBul.node_ids[n1] == qHizliBul.node_ids[n2]):
-    #        n1 = qHizliBul.nodes[random.randint(0,n - 1)]
-    #        n2 = qHizliBul.nodes[random.randint(0,n - 1)]
-    #    s = timeit.default_timer()
-    #    qHizliBul.HizliBul_Birlestir(n1,n2)
-    #    hizliBul_zamanlar.append(timeit.default_timer() - s)
-    #    pass
-    #zamanlar["hb"] = hizliBul_zamanlar
-    #for x in range(1,qHizliBirlesim.m):
-    #    n1 = qHizliBirlesim.nodes[random.randint(0,n - 1)]
-    #    n2 = qHizliBirlesim.nodes[random.randint(0,n - 1)]
-    #    while(n1 == n2 or qHizliBirlesim.HizliBirlesim_KokBul(n1) ==
-    #    qHizliBirlesim.HizliBirlesim_KokBul(n2)):
-    #        n1 = qHizliBirlesim.nodes[random.randint(0,n - 1)]
-    #        n2 = qHizliBirlesim.nodes[random.randint(0,n - 1)]
-    #    s = timeit.default_timer()
-    #    qHizliBirlesim.HizliBirlesim_Birlestir(n1,n2)
-    #    hizliBirlesim_zamanlar.append(timeit.default_timer() - s)
-    #zamanlar["hbir"] = hizliBirlesim_zamanlar
-    #for x in range(1,qAgirlikli.m):
-    #    n1 = qAgirlikli.nodes[random.randint(0,n - 1)]
-    #    n2 = qAgirlikli.nodes[random.randint(0,n - 1)]
-    #    while(n1 == n2 or qAgirlikli.AgirlikliHizliBirlesim_KokBul(n1) ==
-    #    qAgirlikli.AgirlikliHizliBirlesim_KokBul(n2)):
-    #        n1 = qAgirlikli.nodes[random.randint(0,n - 1)]
-    #        n2 = qAgirlikli.nodes[random.randint(0,n - 1)]
-    #    s = timeit.default_timer()
-    #    qAgirlikli.AgirlikHizliBirlesim_Birlestir(n1,n2)
-    #    hizliBirlesimAgirlikli_zamanlar.append(timeit.default_timer() - s)
-    #zamanlar["ahb"] = hizliBirlesimAgirlikli_zamanlar
-    #for x in range(1,qPatika.m):
-    #    n1 = qPatika.nodes[random.randint(0,n - 1)]
-    #    n2 = qPatika.nodes[random.randint(0,n - 1)]
-    #    while(n1 == n2):
-    #        n1 = qPatika.nodes[random.randint(0,n - 1)]
-    #        n2 = qPatika.nodes[random.randint(0,n - 1)]
-    #    s = timeit.default_timer()
-    #    qPatika.PatikaSikistirma_Birlestir(n1,n2)
-    #    patikaSikistirma_zamanlar.append(timeit.default_timer() - s)
-    #zamanlar["p"] = patikaSikistirma_zamanlar
-    #lines = []
-    #plt.ylabel("Zaman")
-    #plt.xlabel("m")
-    #plt.figure(figsize=(10,10))
-    #for x in zamanlar:
-    #    line = plt.plot(range(1,m),zamanlar[x],label=x)
-    #    lines.append(line)
-    #    pass
-    #plt.legend(loc="upper right")
-    #plt.show()
-    #plt.axis([1,m,0,2])
-
-
-
-
     input()
-    #for x in range(1,qHizliBirlesim):
-        
-    #    pass
+
 if __name__ == "__main__":
     sys.exit(int(main() or 0))
 

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Q1", "Algorithm\Q1.pyproj", "{13996424-E899-43D5-B599-ED6C55F7C4A1}"
 EndProject
@@ -18,6 +18,14 @@ EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Q4", "Q4\Q4.pyproj", "{71696E81-6CAB-4979-94CC-BCEC80DAD311}"
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "PlotDeneme", "PlotDeneme\PlotDeneme.pyproj", "{26BD6A6C-DE65-40C0-A61D-8F5A597D1117}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "BruteForceSegmentIntersection", "BruteForceSegmentIntersection\BruteForceSegmentIntersection.pyproj", "{ABC7AAD7-749F-4D39-BEC5-6C6EBC110C92}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "ConvexHull", "ConvexHull\ConvexHull.pyproj", "{C8FCB54C-2DA3-4E18-A7D2-61B5E20E0C28}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "GrahamScan", "GrahamScan\GrahamScan.pyproj", "{7AA3326D-1326-4D20-814D-B5DAE3DD071A}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "PlotScatter", "PlotScatter\PlotScatter.pyproj", "{E0F17C0E-4BB0-4AFF-9BE4-EEE57B3A62BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +53,14 @@ Global
 		{71696E81-6CAB-4979-94CC-BCEC80DAD311}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26BD6A6C-DE65-40C0-A61D-8F5A597D1117}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{26BD6A6C-DE65-40C0-A61D-8F5A597D1117}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABC7AAD7-749F-4D39-BEC5-6C6EBC110C92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABC7AAD7-749F-4D39-BEC5-6C6EBC110C92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8FCB54C-2DA3-4E18-A7D2-61B5E20E0C28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8FCB54C-2DA3-4E18-A7D2-61B5E20E0C28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AA3326D-1326-4D20-814D-B5DAE3DD071A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AA3326D-1326-4D20-814D-B5DAE3DD071A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0F17C0E-4BB0-4AFF-9BE4-EEE57B3A62BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0F17C0E-4BB0-4AFF-9BE4-EEE57B3A62BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
